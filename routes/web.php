@@ -16,3 +16,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/genres','Genre  Controller@index');
+Route::get('/genres/create','GenreController@create');
+Route::get('/genres/update','GenreController@update');
+Route::get('/genres/delete','GenreController@delete');
+Route::get('/games', 'GameController@index');
+Route::resource('games','GameController');
