@@ -33,6 +33,7 @@
             // Перенаправление на страницу /games/create
             window.location.href = "{{ route('games.create') }}";
         });
+        
     </script>
 @endsection
 <style>

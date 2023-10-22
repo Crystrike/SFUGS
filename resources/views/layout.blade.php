@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <title>SFU Game Space</title>
     <!-- Здесь можно подключить ваши стили CSS и скрипты JavaScript -->
-
 </head>
 <body>
 <header>
@@ -40,18 +39,23 @@
         background-color: #f0f0f0;
         font-family: Arial, sans-serif;
         line-height: 1.6;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh; /* Это важная настройка для прижатия footer к низу */
     }
 
     /* Style the header */
     header {
         background-color: #333;
         color: #FF1493;
-        padding: 10px 0;
+        padding: 5px 0; /* Уменьшаем верхний и нижний отступ */
         text-align: center;
+        height: 60px; /* Уменьшаем высоту header */
     }
 
     header h1 {
-        font-size: 24px;
+        font-size: 18px; /* Уменьшаем размер текста */
+        margin: 0; /* Убираем верхний и нижний отступ */
     }
 
     nav ul {
@@ -75,6 +79,7 @@
         padding: 20px;
         background-color: #fff;
         box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+        flex: 1; /* Это важная настройка для растяжения содержимого на всю доступную высоту */
     }
 
     /* Style the footer */
@@ -82,7 +87,8 @@
         background-color: #333;
         color: #FF1493;
         text-align: center;
-        padding: 10px 0;
+        padding: 5px 0; /* Уменьшаем верхний и нижний отступ */
+        height: 85px; /* Уменьшаем высоту footer */
     }
 
     /* Adjust styles for links in the content */
@@ -94,7 +100,6 @@
     a:hover {
         text-decoration: underline;
     }
-
 </style>
 </body>
 </html>

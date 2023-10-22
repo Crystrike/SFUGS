@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Game;
+use App\Models\Genre;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
@@ -15,7 +16,8 @@ class GameController extends Controller
 
     }
     public function create(){
-        return view('Games.create');
+        $genres = Genre::all();
+        return view('Games.create', ['genres' => $genres]);
     }
 
     public function store(Request $request)

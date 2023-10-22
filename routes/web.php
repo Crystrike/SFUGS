@@ -13,12 +13,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController@index');
 Route::get('/genres','Genre  Controller@index');
 Route::get('/genres/create','GenreController@create');
 Route::get('/genres/update','GenreController@update');
 Route::get('/genres/delete','GenreController@delete');
-Route::get('/games', 'GameController@index');
+
 Route::resource('games','GameController');
+Route::get('/tournaments', 'TournamentController@index');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
