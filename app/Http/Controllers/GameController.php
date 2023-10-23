@@ -26,7 +26,7 @@ class GameController extends Controller
         $filename = $data['image']->getClientOriginalName();
         $data['image']->move(Storage::path('/public/img/games/').'origin/',$filename);
         $thumbnail = Image::make(Storage::path('/public/img/games/').'origin/'.$filename);
-        $thumbnail -> fit(300,300);
+        $thumbnail -> fit(250,250);
         $thumbnail->save(storage_path('app' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'img' . DIRECTORY_SEPARATOR . 'games' . DIRECTORY_SEPARATOR . 'thumbnail' . DIRECTORY_SEPARATOR . $filename));
         $data['image'] = $filename;
         Game::create($data);

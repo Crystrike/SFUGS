@@ -16,8 +16,10 @@
             <li><a href="/tournaments">Турниры</a></li>
 
             @if (Auth::check())
+                @if(Auth::user()->hasRole('admin'))
+                    <li><a href="/admin">Админка</a></li>
+                @endif
 
-            <li><a href="#">Админка</a></li>
             <li><a href="#">{{ Auth::user()->name }}</a></li>
             <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Выход</a></li> <!-- Ссылка на выход -->
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">

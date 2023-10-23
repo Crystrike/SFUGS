@@ -21,12 +21,17 @@
         @foreach ($games as $game)
             <div class="game">
                 <p>{{ $game->title }}</p>
-                <p><img src="{{asset('storage/app/public/img/games/thumbnail/'.$game->image) }}" alt="Упс"></p>
+                <p><img src="{{asset('storage/img/games/thumbnail/'.$game->image) }}" alt="Упс"></p>
 
             </div>
         @endforeach
         </div>
-    <button id="addGameButton" class="btn btn-primary">Добавить</button>
+    @if(Auth::check())
+        @if(Auth::user()->hasRole('admin'))
+            <button id="addGameButton" class="btn btn-primary">Добавить</button>
+        @endif
+    @endif
+
     <script>
         document.getElementById('addGameButton').addEventListener('click', function() {
 
