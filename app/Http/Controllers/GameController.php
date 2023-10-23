@@ -30,6 +30,6 @@ class GameController extends Controller
         $thumbnail->save(storage_path('app' . DIRECTORY_SEPARATOR . 'public' . DIRECTORY_SEPARATOR . 'img' . DIRECTORY_SEPARATOR . 'games' . DIRECTORY_SEPARATOR . 'thumbnail' . DIRECTORY_SEPARATOR . $filename));
         $data['image'] = $filename;
         Game::create($data);
-        return redirect()->route('games');
+        return redirect()->route('games.index');
     }
 }

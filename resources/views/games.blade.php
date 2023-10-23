@@ -7,6 +7,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <title>Games</title>
+
 </head>
 <body>
 @extends('layout')
@@ -26,16 +27,15 @@
         @endforeach
         </div>
     <button id="addGameButton" class="btn btn-primary">Добавить</button>
-
     <script>
-        // Обработчик события для кнопки "Добавить"
         document.getElementById('addGameButton').addEventListener('click', function() {
-            // Перенаправление на страницу /games/create
+
             window.location.href = "{{ route('games.create') }}";
         });
-        
     </script>
+
 @endsection
+
 <style>
     .games {
         display: grid;
@@ -48,6 +48,7 @@
         padding: 10px;
         text-align: center;
     }
+
 </style>
 
 </body>

@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'WelcomeController@index');
 Route::get('/genres','Genre  Controller@index');
 Route::get('/genres/create','GenreController@create');
 Route::get('/genres/update','GenreController@update');
@@ -22,5 +23,6 @@ Route::resource('tournaments', 'TournamentController');
 Route::resource('games','GameController');
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+
 

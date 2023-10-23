@@ -14,8 +14,19 @@
             <li><a href="/">Главная</a></li>
             <li><a href="/games">Игры</a></li>
             <li><a href="/tournaments">Турниры</a></li>
-            <li><a href="/login">Вход</a></li>
-            <li><a href="/register">Регистрация</a></li>
+
+            @if (Auth::check())
+
+            <li><a href="#">Админка</a></li>
+            <li><a href="#">{{ Auth::user()->name }}</a></li>
+            <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Выход</a></li> <!-- Ссылка на выход -->
+            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                @csrf
+            </form>
+            @else
+                <li><a href="/login">Вход</a></li>
+                <li><a href="/register">Регистрация</a></li>
+            @endif
         </ul>
     </nav>
 </header>

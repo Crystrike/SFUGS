@@ -26,6 +26,6 @@ class TournamentController extends Controller
     {
         $data = $request->all();
         Tournament::create($data);
-        return redirect()->route('home');
+        return redirect()->route('tournaments.index');
     }
 }

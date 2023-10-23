@@ -1,15 +1,24 @@
 @extends('layout')
 @section('title', 'Tournaments')
+<title>Турниры</title>
 @section('content')
     <div class="tournaments">
-        @foreach ($tournaments as $game)
+        @foreach ($tournaments as $tournament)
             <div class="tournament">
-                <p>{{ $game->title }}</p>
+                <p>{{ $tournament->title }}</p>
 
 
             </div>
         @endforeach
+
     </div>
+    <button id="addTournamentButton" class="btn btn-primary">Добавить</button>
+    <script>
+        document.getElementById('addTournamentButton').addEventListener('click', function() {
+
+            window.location.href = "{{ route('tournaments.create') }}";
+        });
+    </script>
 @endsection
 <style>
     .tournaments {

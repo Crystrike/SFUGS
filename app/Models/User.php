@@ -41,4 +41,9 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    public function getRole()
+    {
+        // Возвращает роль пользователя, используя значение поля role_id
+        return Role::find($this->role_id);
+    }
 }
