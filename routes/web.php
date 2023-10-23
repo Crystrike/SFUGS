@@ -18,10 +18,8 @@ Route::get('/genres','Genre  Controller@index');
 Route::get('/genres/create','GenreController@create');
 Route::get('/genres/update','GenreController@update');
 Route::get('/genres/delete','GenreController@delete');
-
+Route::resource('tournaments', 'TournamentController');
 Route::resource('games','GameController');
-Route::get('/tournaments', 'TournamentController@index');
-
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
