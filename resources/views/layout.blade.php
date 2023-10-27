@@ -17,7 +17,7 @@
 
             @if (Auth::check())
                 @if(Auth::user()->hasRole('admin'))
-                    <li><a href="/admin">Админка</a></li>
+                    <li><a href="/admin_panel">Админка</a></li>
                 @endif
 
             <li><a href="#">{{ Auth::user()->name }}</a></li>

@@ -23,11 +23,8 @@ Route::resource('tournaments', 'TournamentController');
 Route::resource('games','GameController');
 Auth::routes();
 
-Route::group(['middleware'=>['role:admin']], function(){
-    Route::get('/admin', function (){
-        return view('Admin.index');
-    });
+Route::middleware(['role:admin'])->prefix('admin_panel')->group( function(){
+    Route::get('/', [App\Http\Controllers\admin\HomeController::class, 'index']);
 });
-
 
 

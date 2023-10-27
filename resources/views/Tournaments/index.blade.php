@@ -12,7 +12,12 @@
         @endforeach
 
     </div>
-    <button id="addTournamentButton" class="btn btn-primary">Добавить</button>
+    @if(Auth::check())
+        @if(Auth::user()->hasRole('admin') or Auth::user()->hasRole('org'))
+            <button id="addTournamentButton" class="btn btn-primary">Добавить</button>
+        @endif
+    @endif
+
     <script>
         document.getElementById('addTournamentButton').addEventListener('click', function() {
 
