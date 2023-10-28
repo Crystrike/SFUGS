@@ -49,7 +49,7 @@
     }
 
     .game {
-        border: 1px solid #ddd; /* Пример стиля для каждой игры */
+        border: 1px solid #eeeeee; /* Пример стиля для каждой игры */
         padding: 10px;
         text-align: center;
     }

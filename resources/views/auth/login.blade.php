@@ -70,4 +70,7 @@
         </div>
     </div>
 </div>
+    <script>
+        //тут будут регулярные выражения
+    </script>
 @endsection

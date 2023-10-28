@@ -23,7 +23,7 @@ class GameController extends Controller
     public function store(Request $request)
     {
         $data = $request->all();
-        $filename = $data['image']->getClientOriginalName();
+        $filename = $request->file('image')->getClientOriginalName();
         $data['image']->move(Storage::path('/public/img/games/').'origin/',$filename);
         $thumbnail = Image::make(Storage::path('/public/img/games/').'origin/'.$filename);
         $thumbnail -> fit(250,250);

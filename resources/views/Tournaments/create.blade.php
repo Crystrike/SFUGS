@@ -29,12 +29,12 @@
                         </td>
                         <td style="border: none; width: 50%;">
                             <div class="form-group">
-                                <label for="background">Background</label>
-                                <input type="text" class="form-control" id="background" name="background">
+                                <label for="logo">Лого</label>
+                                <input type="file" class="form-control-file" id="logo" name="logo">
                             </div>
                             <div class="form-group">
-                                <label for="logo">Логотип</label>
-                                <input type="text" class="form-control" id="logo" name="logo">
+                                <label for="background">Баннер</label>
+                                <input type="file" class="form-control-file" id="background" name="background">
                             </div>
                         </td>
                     </tr>
