@@ -30,6 +30,7 @@
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
+                                <label class="error-mail" id="error-mail"></label>
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -37,13 +38,15 @@
                                     </span>
                                 @enderror
                             </div>
+
                         </div>
 
                         <div class="row mb-3">
                             <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{old('password')}}" required autocomplete="new-password">
+                                <label class="error-password1" id="error-password1"></label>
 
                                 @error('password')
                                     <span class="invalid-feedback" role="alert">
@@ -74,7 +77,37 @@
         </div>
     </div>
 </div>
+<!-- скрипт для почты -->
 <script>
-    //тут будут регулярные выражения
+    const emailInput = document.getElementById('email');
+    const errorMessage = document.getElementById('error-mail');
+
+    emailInput.addEventListener('input', function () {
+        const email = emailInput.value;
+        const emailRegex = /^[a-zA-Z]+[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+        if (!emailRegex.test(email)) {
+            errorMessage.textContent = 'Некорректный адрес электронной почты';
+        } else {
+            errorMessage.textContent = '';
+        }
+    });
+</script>
+<!-- скрипт для пароля -->
+<script>
+    const passwordInput = document.getElementById('password');
+    const errorMessage1 = document.getElementById('error-password1');
+
+    passwordInput.addEventListener('input', function () {
+        const password = passwordInput.value;
+        let passwordRegex;
+        passwordRegex = /^(?=.*\d)(?=.*[A-Z])(?=.*[!@#$%^&*]).*$/;
+
+        if (!passwordRegex.test(password)) {
+            errorMessage1.textContent = 'Пароль должен содержать цифру, заглавную букву и специальный символ.';
+        } else {
+            errorMessage1.textContent = '';
+        }
+    });
 </script>
 @endsection
