@@ -16,6 +16,7 @@
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                                <span class="error-message" id="error-message">''</span>
 
                                 @error('email')
                                     <span class="invalid-feedback" role="alert">
@@ -70,7 +71,19 @@
         </div>
     </div>
 </div>
-    <script>
-        //тут будут регулярные выражения
-    </script>
+<script>
+    const emailInput = document.getElementById('email');
+    const errorMessage = document.getElementById('error-message');
+
+    emailInput.addEventListener('input', function () {
+        const email = emailInput.value;
+        const emailRegex = /^[a-zA-Z]+[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+
+        if (!emailRegex.test(email)) {
+            errorMessage.textContent = 'Некорректный адрес электронной почты';
+        } else {
+            errorMessage.textContent = '';
+        }
+    });
+</script>
 @endsection

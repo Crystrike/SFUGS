@@ -8,7 +8,7 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('register')  }} ">
                         @csrf
 
                         <div class="row mb-3">
@@ -66,7 +66,7 @@
 
                         <div class="row mb-0">
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary" id="submit-btn">
                                     {{ __('Register') }}
                                 </button>
                             </div>
@@ -77,37 +77,35 @@
         </div>
     </div>
 </div>
-<!-- скрипт для почты -->
+<!-- скрипт для почты и пароля -->
 <script>
-    const emailInput = document.getElementById('email');
-    const errorMessage = document.getElementById('error-mail');
+    const btn = document.getElementById('submit-btn');
+    btn.addEventListener('click', function (evt) {
+        const emailInput = document.getElementById('email');
+        const passwordInput = document.getElementById('password');
+        const errorMessage = document.getElementById('error-mail');
+        const errorMessage1 = document.getElementById('error-password1');
 
-    emailInput.addEventListener('input', function () {
+        // Проверка почты
         const email = emailInput.value;
         const emailRegex = /^[a-zA-Z]+[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
-
         if (!emailRegex.test(email)) {
+            evt.preventDefault();
             errorMessage.textContent = 'Некорректный адрес электронной почты';
         } else {
             errorMessage.textContent = '';
         }
-    });
-</script>
-<!-- скрипт для пароля -->
-<script>
-    const passwordInput = document.getElementById('password');
-    const errorMessage1 = document.getElementById('error-password1');
 
-    passwordInput.addEventListener('input', function () {
+        // Проверка пароля
         const password = passwordInput.value;
-        let passwordRegex;
-        passwordRegex = /^(?=.*\d)(?=.*[A-Z])(?=.*[!@#$%^&*]).*$/;
-
+        const passwordRegex = /^(?=.*\d)(?=.*[A-Z])(?=.*[!@#$%^&*]).*$/;
         if (!passwordRegex.test(password)) {
+            evt.preventDefault();
             errorMessage1.textContent = 'Пароль должен содержать цифру, заглавную букву и специальный символ.';
         } else {
             errorMessage1.textContent = '';
         }
     });
 </script>
+
 @endsection

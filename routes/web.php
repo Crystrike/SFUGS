@@ -21,7 +21,6 @@ Route::get('/genres/update','GenreController@update');
 Route::get('/genres/delete','GenreController@delete');
 Route::resource('tournaments', 'TournamentController');
 Route::resource('games','GameController');
-Route::get('/test', 'WelcomeController@show')->name('tests');
 Auth::routes();
 
 Route::middleware(['role:admin'])->prefix('admin_panel')->group( function(){
