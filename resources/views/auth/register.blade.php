@@ -77,7 +77,7 @@
         </div>
     </div>
 </div>
-<!-- скрипт для почты и пароля -->
+<!-- переделанный скрипт для почты и пароля -->
 <script>
     const btn = document.getElementById('submit-btn');
     btn.addEventListener('click', function (evt) {
