@@ -13,12 +13,13 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
+Route::post('/tournament/create-parc', 'TournamentController@post')->name('create-parc');
 Route::get('/', 'WelcomeController@index');
 Route::get('/genres','Genre  Controller@index');
 Route::get('/genres/create','GenreController@create');
 Route::get('/genres/update','GenreController@update');
 Route::get('/genres/delete','GenreController@delete');
+Route::get('tournament/{id}', 'TournamentController@show')->name('tournament.show');
 Route::resource('tournaments', 'TournamentController');
 Route::resource('games','GameController');
 Auth::routes();

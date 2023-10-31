@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Game;
+use App\Models\Participation;
 use App\Models\Tournament;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -40,6 +41,16 @@ class TournamentController extends Controller
 
 
         Tournament::create($data);
+        return redirect()->route('tournaments.index');
+    }
+    public function show($id){
+        $tour =Tournament::find($id);
+        return view('tournaments.show', ['tour' => $tour]);
+    }
+
+    public function post(Request $request){
+        $data = $request->all();
+        Participation::create($data);
         return redirect()->route('tournaments.index');
     }
 }

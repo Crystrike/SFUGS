@@ -7,8 +7,7 @@
             <div class="tournament">
                 <p>{{ $tournament->title }}</p>
                 <p><img src="{{asset('storage/app/public/img/tournament/thumbnail/'.$tournament->logo) }}" alt="Упс"></p>
-
-
+                <a href="{{ route('tournament.show', ['id' => $tournament->id]) }}" class="btn btn-primary">Перейти</a>
             </div>
         @endforeach
 
