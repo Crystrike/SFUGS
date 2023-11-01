@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 Route::post('/tournament/create-parc', 'TournamentController@post')->name('create-parc');
 Route::get('/', 'WelcomeController@index');
+Route::get('/user', 'UserController@index')->name('user');
 Route::get('/genres','Genre  Controller@index');
 Route::get('/genres/create','GenreController@create');
 Route::get('/genres/update','GenreController@update');

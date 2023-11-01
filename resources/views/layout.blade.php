@@ -20,7 +20,7 @@
                     <li><a href="/admin_panel">Админка</a></li>
                 @endif
 
-            <li><a href="#">{{ Auth::user()->name }}</a></li>
+            <li><a href="/user">{{ Auth::user()->name }}</a></li>
             <li><a href="{{ route('logout') }}" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Выход</a></li> <!-- Ссылка на выход -->
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                 @csrf
