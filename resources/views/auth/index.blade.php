@@ -5,7 +5,7 @@
     @foreach($parc as $parc1)
         <h1>Ваши турниры</h1>
         @if(Auth::user()->id = $parc1->user_id)
-            <p>{{$parc1->tournament->title}}</p>
+            <a href="tournament/{{$parc1->tournament->id}}">{{$parc1->tournament->title}}</a>
         @endif
     @endforeach
 @endsection

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Auth;
 
 use App\Models\Game;
 use App\Models\Participation;
@@ -44,8 +45,16 @@ class TournamentController extends Controller
         return redirect()->route('tournaments.index');
     }
     public function show($id){
+        $user = Auth::user();
         $tour =Tournament::find($id);
-        return view('tournaments.show', ['tour' => $tour]);
+        $isRecord =Participation::where('user_id', $user->id)->where('tournament_id', $tour->id)->exists();
+        if (!$isRecord){
+            $parc = true;
+        }
+        else{
+            $parc = false;
+        }
+        return view('tournaments.show', ['tour' => $tour, 'parc' =>$parc]);
     }
 
     public function post(Request $request){
