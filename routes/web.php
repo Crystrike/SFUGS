@@ -26,7 +26,7 @@ Route::resource('games','GameController');
 Auth::routes();
 
 Route::middleware(['role:admin'])->prefix('admin_panel')->group( function(){
-    Route::get('/', [App\Http\Controllers\admin\HomeController::class, 'index']);
+    Route::get('/', [App\Http\Controllers\admin\HomeController::class, 'index'])->name('homeAdmin');
 });
 
 

@@ -8,7 +8,8 @@ use Illuminate\Http\Request;
 class WelcomeController extends Controller
 {
     public function index(){
-        return view('welcome');
+        $tournaments = Tournament::all();
+        return view('welcome', ['tournaments'=> $tournaments]);
     }
     public function show(){
         $qwe = Tournament::all();
