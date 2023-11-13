@@ -22,6 +22,7 @@ class CreateTournamentsTable extends Migration
             $table->string('logo');
             $table->string('background');
             $table->timestamps();
+            $table->dateTime('DateStart');
         });
     }
 

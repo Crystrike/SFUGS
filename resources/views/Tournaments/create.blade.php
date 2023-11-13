@@ -36,6 +36,10 @@
                                 <label for="background">Баннер</label>
                                 <input type="file" class="form-control-file" id="background" name="background">
                             </div>
+                            <div class="form-group">
+                                <label for="dateStart">Дата начала</label>
+                                <input type="datetime-local" class="form-control" id="dateStart" name="dateStart">
+                            </div>
                         </td>
                     </tr>
                 </table>

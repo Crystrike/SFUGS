@@ -10,12 +10,19 @@
             @csrf
             <label for="user_id" class="hidden-element"></label>
             <input type="number" class="hidden-element"  id="user_id" name="user_id" value="{{Auth::user()->id}}">
-            <label for="tournament_id_id" class="hidden-element"></label>
+            <label for="tournament_id" class="hidden-element"></label>
             <input type="number" class="hidden-element" id="tournament_id" name="tournament_id" value="{{$tour->id}}">
             <button type="submit" class="btn btn-primary">Записаться</button>
         </form>
-        @else
+        @elseif(!now()->diff($tour->DateStart)->m < 1 && $parc != true)
             <p>Вы уже записаны</p>
+        @elseif($parc != true && $data->first()->confirm == 0 )
+            <div class="col-lg-8">
+                <button onclick="updateRecord({{$data->first()->id}})">Подтвердить участие</button>
+            </div>
+        @elseif($parc != true && $data->first()->confirm != 0)
+            <strong>Вы подтвердили участие!!!</strong>
+            <p>Наслаждайтесь турниром!</p>
         @endif
 
     </div>
@@ -25,5 +32,27 @@
         }
     </style>
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script>
+        function updateRecord(RecordId) {
+            $.ajax({
+                type: "POST",
+                url: "{{ route('update.record') }}",
+                data: {
+                    id : RecordId,
+                },
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
+                success: function(response) {
+                // Обработка успешного ответа от сервера
+                    $("#result").html("Запись обновлена успешно!");
+                },
+                error: function(error) {
+                // Обработка ошибки
+                    $("#result").html("Ошибка при обновлении записи.");
+                }
+            });
+        }
+    </script>
 @endsection

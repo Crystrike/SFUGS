@@ -23,6 +23,7 @@ Route::get('/genres/delete','GenreController@delete');
 Route::get('tournament/{id}', 'TournamentController@show')->name('tournament.show');
 Route::resource('tournaments', 'TournamentController');
 Route::resource('games','GameController');
+Route::post('/update-record', 'TournamentController@post2')->name('update.record');
 Auth::routes();
 
 Route::middleware(['role:admin'])->prefix('admin_panel')->group( function(){

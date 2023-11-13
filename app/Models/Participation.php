@@ -10,7 +10,6 @@ class Participation extends Model
     use HasFactory;
     protected $table = 'participations';
     protected $guarded = [];
-    protected $fillable = ['user_id', 'tournament_id'];
     public function tournament(){
         return $this->belongsTo(Tournament::class, 'tournament_id');
     }

@@ -54,12 +54,25 @@ class TournamentController extends Controller
         else{
             $parc = false;
         }
-        return view('tournaments.show', ['tour' => $tour, 'parc' =>$parc]);
+        $data = Participation::where('user_id', $user->id)->where('tournament_id', $tour->id)->get();
+        return view('tournaments.show', ['tour' => $tour, 'parc' =>$parc, 'data' =>$data]);
     }
 
     public function post(Request $request){
         $data = $request->all();
         Participation::create($data);
         return redirect()->route('tournaments.index');
+    }
+
+
+    public function post2(Request $request){
+        $participationId = $request->id;
+
+        // Ваш код для обновления записи в базе данных
+        $participation = Participation::find($participationId);
+
+        if ($participation) {
+            $participation->update(['confirm' => 1]);
+        }
     }
 }
